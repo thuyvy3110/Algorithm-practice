@@ -3,13 +3,14 @@
 
 //Test case [1]
 //Input : ["a","banana","app","appl","ap","apply","apple"]
-//Output : "banana"
 //Expected : "apple"
 
 //Test case [2]
 //Input : ["m","mo","moc","moch","mocha","l","la","lat","latt","latte","c","ca","cat"]
-//Output : "cat"
 //Expected : "latte"
+
+//Runtime: 17 ms, faster than 33.77% of Java online submissions for Longest Word in Dictionary.
+//Memory Usage: 48.5 MB, less than 6.25% of Java online submissions for Longest Word in Dictionary.
 
 
 class Solution {
