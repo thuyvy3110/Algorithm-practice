@@ -1,0 +1,56 @@
+public class Main {
+    public static void main (String[] args) {
+        Scanner s = new Scanner(System.in);
+        
+        int num = s.nextInt();
+        s.nextLine();
+    
+        String[] words = new String[num];
+        Map<String, String> mapWords = new HashMap<String, String>();
+    
+        class Dicionary {
+            public Dicionary(String inputWorld, String inputMeanig) {
+                mapWords.put(inputWorld, inputMeanig);
+            }
+        }
+        List<Dicionary> dicionaries = new ArrayList<>();
+        String[] listWords = new String[num];
+        String[] sortedWords = new String[num];
+    
+        for (int i = 0; i < num; i++) {
+            words[i] = s.nextLine();
+            String[] splitString = words[i].split(":");
+            dicionaries.add(new Dicionary(splitString[0], splitString[1]));
+            listWords[i] = (splitString[0]);
+        }
+    
+        Arrays.sort(listWords);
+        
+        for(int i = 0; i < num; i++){
+            sortedWords[i] = listWords[i];
+        }
+        
+        String pattern = s.next();
+        int pos = 0;
+    
+        boolean result = Arrays.stream(sortedWords).anyMatch(pattern::equals);
+        
+        if (result) {
+            for (int i = 0; i < num; i++) {
+                if (sortedWords[i].equals(pattern)) {
+                    pos = i;
+                    break;
+                }
+            }
+    
+            for (int i = pos, j = 0; i < num; i++, j++) {
+                System.out.println(sortedWords[i] + ':' + mapWords.get(sortedWords[i]));
+                if (j == 4)
+                    break;
+            }
+        }
+        else {
+            System.out.println("no data");
+        }
+    }
+}
