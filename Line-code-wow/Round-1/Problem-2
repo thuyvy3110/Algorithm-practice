@@ -1,0 +1,44 @@
+public class Main {
+	public static void main (String[] args) {
+        Scanner s = new Scanner(System.in);
+        
+        int num = s.nextInt();
+    
+        Map<Integer, Integer> house = new HashMap<>();
+        
+        for(int i=0; i < num; i++) {
+            int address = s.nextInt();
+            int location = s.nextInt();
+            house.put(address, location);
+        }
+    
+        ArrayList<Integer> myLocation = new ArrayList<>();
+        
+        while (s.hasNextInt()) {
+            myLocation.add(s.nextInt());
+        }
+        
+        List<Integer> minKeys = new ArrayList<> ();
+        
+        for (int i=0; i < myLocation.size(); i++) {
+            int min = 1000000000;
+            int keyMin = 100000;
+            
+            for (Map.Entry<Integer, Integer> entry : house.entrySet()) {
+            	int distance = Math.abs((myLocation.get(i) - entry.getValue()));
+            	int tempKeyMin = entry.getKey();
+                if(distance < min) {
+                    min = distance;
+                    keyMin = tempKeyMin;
+                }
+                
+                if(distance == min) {
+                	if(tempKeyMin < keyMin) {
+                		keyMin = tempKeyMin;
+                	}
+                }
+            }
+            System.out.println(keyMin);
+        }
+    }
+}
